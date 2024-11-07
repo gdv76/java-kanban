@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Epic extends Task{
     private HashMap<Integer,SubTask> subTasks;
     public Epic(Integer id, String title, String description) {
-        super(id, title, description, TaskStatus.NEW);
+        super(id, title, description, null);
 
         subTasks = new HashMap<>();
 
@@ -39,7 +39,7 @@ public class Epic extends Task{
             }
             done = done && (st.getStatus() == TaskStatus.DONE);
         }
-        return done == true?TaskStatus.DONE:epicStatus;
+        return subTasks.values().size() > 0 && done == true?TaskStatus.DONE:epicStatus;
     }
 
 }
