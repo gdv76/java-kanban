@@ -55,4 +55,13 @@ public class Task {
     public int hashCode() {
         return getId().hashCode();
     }
+
+    @Override
+    public String toString() {
+        return this.getClass() + "{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", status=" + this.getStatus() + '}';
+    }
 }

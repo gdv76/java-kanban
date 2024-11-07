@@ -11,6 +11,9 @@ public class Epic extends Task {
 
     }
 
+// Вначале для методом ниже, делал обработку ситуации если task = null через try-catch и выбросом NullPointerException
+// , но т.к выброс исключения будет в любом случае - убрал
+
     public void addSubTask(Task task) {
         subTasks.put(task.getId(), new SubTask(task, this));
     }
@@ -21,7 +24,10 @@ public class Epic extends Task {
     }
 
     public SubTask getSubTask(Integer subTaskId) {
-        return subTasks.get(subTaskId);
+        if (subTaskId != null) {
+            return subTasks.get(subTaskId);
+        }
+        return null;
     }
 
     public void removeSubTask(Integer subTaskId) {
@@ -36,7 +42,7 @@ public class Epic extends Task {
     public void setStatus(TaskStatus status) {
     }
 
-
+    // Рассчитываем статус эпика
     public TaskStatus getStatus() {
         TaskStatus epicStatus = TaskStatus.NEW;
         Boolean done = true;
@@ -50,4 +56,13 @@ public class Epic extends Task {
         return subTasks.values().size() > 0 && done == true ? TaskStatus.DONE : epicStatus;
     }
 
+    @Override
+    public String toString() {
+        String infoByEpic = super.toString();
+
+        for(SubTask sb: subTasks.values()) {
+            infoByEpic = infoByEpic + '\n' + sb.toString();
+        }
+        return infoByEpic;
+    }
 }

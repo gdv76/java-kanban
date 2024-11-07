@@ -20,6 +20,7 @@ public class TaskManager {
 
 // Получаем список задач по заданному классу.
 // Если класс не задан (равен null), то возвращаем полный список задач
+// При не верном классе возвращается пустая коллекция
 
     public <T> Collection<?> getTasks(Class T) {
         if (T == null) {
@@ -31,6 +32,7 @@ public class TaskManager {
                 resultValues.add((T) task);
             }
         }
+
         return resultValues;
     }
 

@@ -19,4 +19,9 @@ public class SubTask extends Task {
     public void setEpic(Epic epic) {
         this.epic = epic;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " - for epic with id = " + epic.getId() + " ";
+    }
 }
