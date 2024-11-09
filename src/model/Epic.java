@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -28,6 +30,10 @@ public class Epic extends Task {
             return subTasks.get(subTaskId);
         }
         return null;
+    }
+
+    public void removeAllSubTask() {
+        subTasks.clear();
     }
 
     public void removeSubTask(Integer subTaskId) {
