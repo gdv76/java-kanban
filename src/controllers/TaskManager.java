@@ -82,6 +82,8 @@ public class TaskManager {
     }
 
 // Если задача- Эпик, то дополнительно удаляем все подзадачи
+// Удаление отдельно подзадачи кажется не имеет смысл т.к она часть эпика и в списке менеджера задач не может
+// находиться вне эпика
     public void removeTaskById(Integer taskId) {
         Task task = tasks.get(taskId);
         if (task != null && task instanceof Epic) {
