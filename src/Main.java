@@ -72,9 +72,6 @@ public class Main {
             }
             System.out.println('\n' + "Удаляем задачу и эпик после чего выводим список повторно:");
             taskManager.removeTaskById(1);
-            System.out.println(epicSecond);
-            taskManager.removeTaskById(6);
-            System.out.println(epicSecond);
 
             tasks = (Collection<Task>) taskManager.getTasks(null);
 
