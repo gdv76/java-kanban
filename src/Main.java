@@ -1,4 +1,4 @@
-import controllers.TaskManager;
+import controllers.InMemoryTaskManager;
 import model.Epic;
 import model.SubTask;
 import model.Task;
@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println("Поехали!");
 
-        TaskManager taskManager = new TaskManager();
+        InMemoryTaskManager taskManager = new InMemoryTaskManager();
 
         try {
 // Формируем список тестовых задач
