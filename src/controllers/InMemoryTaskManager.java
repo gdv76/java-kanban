@@ -3,6 +3,7 @@ package controllers;
 import model.Epic;
 import model.SubTask;
 import model.Task;
+import utils.Managers;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,17 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
-    private static final Integer maxElementHistory = 10;
     private Integer counter = 0;
     private HashMap<Integer, Task> tasks;
 
-    private ArrayList<Task> history;
+    private HistoryManager historyManager = Managers.getDefaultHistory();
 
     private Class T;
 
     public InMemoryTaskManager() {
         tasks = new HashMap<>();
-        history = new ArrayList<>();
     }
 
     public Integer getCounter() {
@@ -102,12 +101,7 @@ public class InMemoryTaskManager implements TaskManager {
     @Override
     public Task getTaskById(Integer taskId) {
         Task task = tasks.get(taskId);
-        if (task != null) {
-            history.add(task);
-            if (history.size() > maxElementHistory) {
-                history.remove(0);
-            }
-        }
+        historyManager.add(task);
         return task;
     }
 
@@ -118,11 +112,6 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Task> getHistory() {
-        ArrayList<Task> hist = new ArrayList<>();
-
-        for (int i = history.size() - 1; i >= 0; i--) {
-            hist.add(history.get(i));
-        }
-        return hist;
+        return historyManager.getHistory();
     }
 }
