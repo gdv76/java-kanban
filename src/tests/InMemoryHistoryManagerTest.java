@@ -2,7 +2,6 @@ package tests;
 
 import controllers.InMemoryHistoryManager;
 import model.Task;
-import model.TaskStatus;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

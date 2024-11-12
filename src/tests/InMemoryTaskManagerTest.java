@@ -1,13 +1,11 @@
 package tests;
 
 import controllers.InMemoryTaskManager;
-import controllers.TaskManager;
 import model.Epic;
 import model.SubTask;
 import model.Task;
 import model.TaskStatus;
 import org.junit.jupiter.api.Test;
-import utils.Managers;
 
 import static model.TaskStatus.NEW;
 import static org.junit.jupiter.api.Assertions.*;

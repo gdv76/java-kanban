@@ -2,7 +2,6 @@ package tests;
 
 import controllers.TaskManager;
 import model.Task;
-import model.TaskStatus;
 import org.junit.jupiter.api.Test;
 import utils.Managers;
 
