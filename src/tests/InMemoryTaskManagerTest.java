@@ -18,7 +18,7 @@ class InMemoryTaskManagerTest {
 
         Task task = new Task(12, "Title task", "Description task", NEW);
         Epic epic = new Epic(11, "Title epic", "Description epic");
-        SubTask subTask = new SubTask(null, "Подзадача", "Тестовый пример подзадачи", TaskStatus.NEW,epic);
+        SubTask subTask = new SubTask(null, "Подзадача", "Тестовый пример подзадачи", TaskStatus.NEW, epic);
         Integer taskId = taskManager.addTask(task);
         assertEquals(taskId, taskManager.getTaskById(taskId).getId(), "Не удалось получить добавленную задачу");
 
@@ -26,7 +26,7 @@ class InMemoryTaskManagerTest {
         assertEquals(epicId, taskManager.getTaskById(epicId).getId(), "Не удалось получить добавленный эпик");
 
         Integer subtaskId = taskManager.addTask(subTask);
-        Epic epicInTaskManager = (Epic)(taskManager.getTaskById(epicId));
+        Epic epicInTaskManager = (Epic) (taskManager.getTaskById(epicId));
         assertEquals(subtaskId, epicInTaskManager.getSubTask(subtaskId).getId(), "Не удалось получить добавленную подзадачу");
     }
 }

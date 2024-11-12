@@ -29,7 +29,7 @@ class ManagersTest {
 
         Integer idTask1 = taskManager.addTask(task1);
         Integer idTask2 = taskManager.addTask(task2);
-        assertNotEquals(idTask1,idTask2, "ID задач не уникальны");
+        assertNotEquals(idTask1, idTask2, "ID задач не уникальны");
     }
 
     @Test
@@ -41,9 +41,9 @@ class ManagersTest {
         Integer idTask = taskManager.addTask(task);
         Task taskOnManager = taskManager.getTaskById(idTask);
 
-        assertEquals(task.getTitle(),taskOnManager.getTitle(), "Заголовок задач не совпадает");
-        assertEquals(task.getDescription(),taskOnManager.getDescription(), "Описание задач не совпадает");
-        assertEquals(task.getStatus(),taskOnManager.getStatus(), "Статус задач не совпадает");
+        assertEquals(task.getTitle(), taskOnManager.getTitle(), "Заголовок задач не совпадает");
+        assertEquals(task.getDescription(), taskOnManager.getDescription(), "Описание задач не совпадает");
+        assertEquals(task.getStatus(), taskOnManager.getStatus(), "Статус задач не совпадает");
     }
 
 }

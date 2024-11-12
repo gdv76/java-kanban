@@ -13,6 +13,7 @@ class EpicTest {
         Epic epic2 = new Epic(11, "Title epic 2", "Description epic 2");
         assertEquals(epic1, epic2, "Эпики не совпадают.");
     }
+
     @Test
     void epicNotInjectToIntoYourself() {
         Epic epic = new Epic(11, "Title epic", "Description epic");
