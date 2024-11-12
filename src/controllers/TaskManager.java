@@ -14,4 +14,6 @@ public interface TaskManager {
     Task UpdateTask(Task task);
 
     List<Task> getHistory();
+
+    public <T> Collection<?> getTasks(Class T);
 }
