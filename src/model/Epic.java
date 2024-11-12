@@ -10,7 +10,6 @@ public class Epic extends Task {
         super(id, title, description, null);
 
         subTasks = new HashMap<>();
-
     }
 
 // Вначале для методом ниже, делал обработку ситуации если task = null через try-catch и выбросом NullPointerException
@@ -79,4 +78,12 @@ public class Epic extends Task {
         }
         return infoByEpic;
     }
+    public Epic clone() {
+        Epic epic = new Epic(this.getId(),this.getTitle(),this.getDescription());
+        for (SubTask subTask: this.getSubTasks()) {
+            epic.addSubTask(subTask.clone());
+        }
+        return epic;
+    }
+
 }
