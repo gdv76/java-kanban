@@ -26,15 +26,15 @@ public class Main {
             Epic epicFirst = new Epic(null, "Эпик 1", "некоторое описание эпика 1");
             taskManager.addTask(epicFirst);
 
-            SubTask subTask1 = new SubTask(null, "Подзадача 1", "Тестовый пример", TaskStatus.NEW,epicFirst);
-            SubTask subTask2 = new SubTask(null, "Подзадача 2", "Тестовый пример", TaskStatus.NEW,epicFirst);
+            SubTask subTask1 = new SubTask(null, "Подзадача 1", "Тестовый пример", TaskStatus.NEW, epicFirst);
+            SubTask subTask2 = new SubTask(null, "Подзадача 2", "Тестовый пример", TaskStatus.NEW, epicFirst);
             taskManager.addTask(subTask1);
             taskManager.addTask(subTask2);
 
             Epic epicSecond = new Epic(null, "Эпик 2", "некоторое описание эпика 1");
             taskManager.addTask(epicSecond);
 
-            SubTask subTask3 = new SubTask(null, "Подзадача 1", "Тестовый пример", TaskStatus.NEW,epicSecond);
+            SubTask subTask3 = new SubTask(null, "Подзадача 1", "Тестовый пример", TaskStatus.NEW, epicSecond);
             taskManager.addTask(subTask3);
 
             Collection<Task> tasks = (Collection<Task>) taskManager.getTasks(null);
@@ -48,7 +48,7 @@ public class Main {
 //                    System.out.println("model.SubTask id = " + sb.getId() + " title = " + sb.getTitle() + " description =" + sb.getDescription());
 //                }
 //            }
-            for(Task task: tasks) {
+            for (Task task : tasks) {
                 System.out.println(task);
             }
 
@@ -59,7 +59,7 @@ public class Main {
             taskManager.getTaskById(3);
 
             System.out.println('\n' + "История обращений к задачам");
-            for (Task task:taskManager.getHistory()) {
+            for (Task task : taskManager.getHistory()) {
                 System.out.println(task);
             }
 
@@ -79,7 +79,7 @@ public class Main {
 
             tasks = (Collection<Task>) taskManager.getTasks(null);
 
-            for(Task task: tasks) {
+            for (Task task : tasks) {
                 System.out.println(task);
             }
             System.out.println('\n' + "Удаляем задачу и эпик после чего выводим список повторно:");
@@ -87,7 +87,7 @@ public class Main {
 
             tasks = (Collection<Task>) taskManager.getTasks(null);
 
-            for(Task task: tasks) {
+            for (Task task : tasks) {
                 System.out.println(task);
             }
 
