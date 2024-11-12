@@ -16,13 +16,21 @@ public class Epic extends Task {
 // Вначале для методом ниже, делал обработку ситуации если task = null через try-catch и выбросом NullPointerException
 // , но т.к выброс исключения будет в любом случае - убрал
 
-    public void addSubTask(Task task) {
-        subTasks.put(task.getId(), new SubTask(task, this));
+    public Integer addSubTask(Task task) {
+        if (task instanceof SubTask) {
+            subTasks.put(task.getId(), new SubTask(task, this));
+            return task.getId();
+        }
+        return null;
     }
 
-    public void addSubTask(SubTask subTask) {
-        subTask.setEpic(this);
-        subTasks.put(subTask.getId(), subTask);
+    public Integer addSubTask(SubTask subTask) {
+        if (subTask != null && subTask.getId() != null) {
+            subTask.setEpic(this);
+            subTasks.put(subTask.getId(), subTask);
+            return subTask.getId();
+        }
+        return null;
     }
 
     public SubTask getSubTask(Integer subTaskId) {
