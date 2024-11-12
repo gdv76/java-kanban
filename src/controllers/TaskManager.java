@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface TaskManager {
     Integer addTask(Task task);
+
     void removeTaskById(Integer taskId);
 
     Task getTaskById(Integer taskId);

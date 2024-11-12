@@ -73,14 +73,15 @@ public class Epic extends Task {
     public String toString() {
         String infoByEpic = super.toString();
 
-        for(SubTask sb: subTasks.values()) {
+        for (SubTask sb : subTasks.values()) {
             infoByEpic = infoByEpic + '\n' + sb.toString();
         }
         return infoByEpic;
     }
+
     public Epic clone() {
-        Epic epic = new Epic(this.getId(),this.getTitle(),this.getDescription());
-        for (SubTask subTask: this.getSubTasks()) {
+        Epic epic = new Epic(this.getId(), this.getTitle(), this.getDescription());
+        for (SubTask subTask : this.getSubTasks()) {
             epic.addSubTask(subTask.clone());
         }
         return epic;
