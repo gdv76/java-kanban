@@ -2,6 +2,9 @@ package controllers;
 
 import model.Task;
 
+import java.util.Collection;
+import java.util.List;
+
 public interface TaskManager {
     Integer addTask(Task task);
     void removeTaskById(Integer taskId);
@@ -9,4 +12,6 @@ public interface TaskManager {
     Task getTaskById(Integer taskId);
 
     Task UpdateTask(Task task);
+
+    List<Task> getHistory();
 }

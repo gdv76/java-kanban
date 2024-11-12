@@ -7,14 +7,20 @@ import model.Task;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class InMemoryTaskManager implements TaskManager {
+    private static final Integer maxElementHistory = 10;
     private Integer counter = 0;
     private HashMap<Integer, Task> tasks;
+
+    private ArrayList<Task> history;
+
     private Class T;
 
     public InMemoryTaskManager() {
         tasks = new HashMap<>();
+        history = new ArrayList<>();
     }
 
     public Integer getCounter() {
@@ -29,7 +35,7 @@ public class InMemoryTaskManager implements TaskManager {
 
 // Если это сабтаска то поверяем что для нее есть эпик и добавляем к подзадачам эпика
         if (task instanceof SubTask) {
-            SubTask subTask = (SubTask)task;
+            SubTask subTask = (SubTask) task;
             Epic epic = subTask.getEpic();
             if (epic == null) {
                 return null;
@@ -69,37 +75,54 @@ public class InMemoryTaskManager implements TaskManager {
         return resultValues;
     }
 
-// Если аргумент NULL, то удаляем все задачи из менеджера задач
+    // Если аргумент NULL, то удаляем все задачи из менеджера задач
     public <T> void removeAllTasks(Class T) {
         if (T == null) {
             tasks.clear();
             return;
         }
-        for(Task t: tasks.values()) {
+        for (Task t : tasks.values()) {
             if (t.getClass() == T) {
                 tasks.remove(t.getId());
             }
         }
     }
 
-// Если задача- Эпик, то дополнительно удаляем все подзадачи
+    // Если задача- Эпик, то дополнительно удаляем все подзадачи
     @Override
     public void removeTaskById(Integer taskId) {
         Task task = tasks.get(taskId);
         if (task != null && task instanceof Epic) {
-           Epic epic = (Epic) task;
-           epic.removeAllSubTask();
+            Epic epic = (Epic) task;
+            epic.removeAllSubTask();
         }
         tasks.remove(taskId);
     }
 
     @Override
     public Task getTaskById(Integer taskId) {
-        return tasks.get(taskId);
+        Task task = tasks.get(taskId);
+        if (task != null) {
+            history.add(task);
+            if (history.size() > maxElementHistory) {
+                history.remove(0);
+            }
+        }
+        return task;
     }
 
     @Override
     public Task UpdateTask(Task task) {
         return tasks.put(task.getId(), task);
+    }
+
+    @Override
+    public List<Task> getHistory() {
+        ArrayList<Task> hist = new ArrayList<>();
+
+        for (int i = history.size() - 1; i >= 0; i--) {
+            hist.add(history.get(i));
+        }
+        return hist;
     }
 }

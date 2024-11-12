@@ -36,6 +36,17 @@ public class Main {
             SubTask subTask3 = new SubTask(null, "Подзадача 1", "Тестовый пример", TaskStatus.NEW,epicSecond);
             taskManager.addTask(subTask3);
 
+//            taskManager.getTaskById(2);
+//            taskManager.getTaskById(1);
+//            taskManager.getTaskById(6);
+//            taskManager.getTaskById(3);
+//
+//            System.out.println("start");
+//            for (Task task:taskManager.getHistory()) {
+//                System.out.println(task);
+//            }
+//            System.out.println("end");
+
             Collection<Task> tasks = (Collection<Task>) taskManager.getTasks(null);
 
 // Пример получения задач по типу - model.Epic
