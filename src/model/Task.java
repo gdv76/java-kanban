@@ -1,6 +1,6 @@
 package model;
 
-public class Task {
+public class Task implements Cloneable {
     private Integer id;
     private String title;
     private String description;
@@ -11,6 +11,17 @@ public class Task {
         this.title = title;
         this.description = description;
         this.status = status;
+    }
+
+    public Task(Task task) {
+        this.id = task.getId();
+        this.title = task.getTitle();
+        this.description = task.getDescription();
+        this.status = getStatus();
+    }
+
+    public Task clone() {
+        return new Task(this.getId(), this.getTitle(), this.getDescription(), this.getStatus());
     }
 
     public Integer getId() {

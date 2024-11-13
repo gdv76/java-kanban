@@ -22,6 +22,12 @@ public class SubTask extends Task {
         this.epic = epic;
     }
 
+    public SubTask clone() {
+        SubTask subTask = new SubTask(this.getId(), this.getTitle(), this.getDescription(), this.getStatus(), epic);
+
+        return subTask;
+    }
+
     @Override
     public String toString() {
         return super.toString() + " - for epic with id = " + epic.getId() + " ";
